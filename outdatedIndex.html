@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Title</title>
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+        <h1 id ="hello"> 안녕하세요 </h1>
+        
+        <div class="alert-box" id="alert">
+          <p id="titleId">알림창임</p>
+          <button id="close"> 닫기 </button>
+        </div>
+        
+        <button onclick="alertBox('아이디입력')">버튼1</button>
+        <button onclick="alertBox('비번입력')">버튼2</button>
+        
+        <script>
+            
+            /*
+            document.getElementById('close').addEventListener('click', function(){
+                document.getElementById('alert').style.display = 'none'
+            });
+            */
+            document.getElementById('close').addEventListener('click', function(){
+                displayBlock('none')
+            });
+        //document.getElementById('hello').innerHTML = '하이';
+            function displayBlock(input){ //block은 보이기, none은 숨기기
+                document.getElementById('alert').style.display = input;
+            }
+            
+            function alertBox(name){
+                document.getElementById('titleId').innerHTML = name
+                displayBlock('block')
+                
+            }
+            
+            
+
+         
+        </script>
+    </body>
+</html>
