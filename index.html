@@ -21,10 +21,11 @@
         <h4>로그인하세요</h4>
         <form action="success.html">
           <div class="my-3">
-            <input type="text" class="form-control" />
+            <input type="email" class="form-control" id='email' />
+            <!--타입을 email로 지정하면 @ 이 들어갔는지 확인함-->
           </div>
           <div class="my-3">
-            <input type="password" class="form-control" />
+            <input type="password" class="form-control" id='password'/>
           </div>
           <button type="submit" class="btn btn-primary">전송</button>
           <button type="button" class="btn btn-danger" id="close">닫기</button>
@@ -34,9 +35,20 @@
 
     <script>
       //전송버튼 누르면 input입력값이 공백이면 공백입니다라는 알림창 띄우기
-      if (1) {
-      } else {
-      }
+     $('form').on('submit',function(e){ //원하는 html을 태그명으로 찾고 싶으면 마침표나 # 없이 $('태그명')
+        if($('#email').val() == ''){
+          e.preventDefault();
+          alert('아이디를 입력하세요');
+        }
+       else if($('#password').val() == ''){
+         e.preventDefault();
+          alert('비밀번호를 입력하세요');
+        }
+       else if($('#password').val().length < 6){
+           e.preventDefault();
+           alert('비밀번호는 반드시 6자리 이상')
+         }
+      });
     </script>
 
     <nav class="navbar navbar-light bg-light">
@@ -89,4 +101,4 @@
   </body>
 </html>
 
-<!--깃 변경사항 작동 여부 확인용 주석-->
+<!-- 확인용 주석-->
