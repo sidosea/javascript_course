@@ -39,3 +39,21 @@ display: none;
 .badge {
     margin-left: auto;
 }
+
+.loginbox {
+    background-color: white;
+}
+
+#login {
+
+}
+
+.slide-container {
+    width: 300vw;
+    transition: all 1s;
+}
+
+.slide-box {
+    width: 100vw;
+    float: left;
+}

@@ -81,8 +81,9 @@
     <script>
       $(".hello").html("테스트 메인 페이지"); //jquery 사용 클래스의 내용물 변경
     </script>
-
-        <button id="login">로그인</button>
+    <div class="loginbox">
+      <button id="login">로그인</button>
+    </div>
 
     <script>
       $("#close").on("click", function () {
@@ -93,10 +94,57 @@
         $(".black-bg").fadeIn(); //
       });
     </script>
-    <div class="alert alert-danger">5초 이내 구매시 사은품 증정</div>
+    <div class="alert alert-danger"><span id="alertTime">5</span>초뒤 사라집니다.</div>
     <script>
-    setTimeout(function(){$('.alert').hide()}, 1000);
+      var number = 5;
+      setInterval(function () {
+        $("#alertTime").text(number);
+        number--;
+      }, 1000);
+      setTimeout(function () {
+        $(".alert").fadeOut();
+      }, 5000);
     </script>
+
+    <!--사진을 여러장 보여주는 슬라이드 컨테이너(캐러셀)-->
+    <div style="overflow: hidden">
+      <div class="slide-container">
+        <div class="slide-box">
+          <img src="car1.png" />
+        </div>
+        <div class="slide-box">
+          <img src="car2.png" />
+        </div>
+        <div class="slide-box">
+          <img src="car3.png" />
+        </div>
+      </div>
+    </div>
+    <!--박스 옮기는 버튼-->
+    <button class="slide-1">1</button>
+    <button class="slide-2">2</button>
+    <button class="slide-3">3</button>
+
+    <!--다음/이전버튼으로 바꾸기-->
+    <button class="next-btn">다음</button>
+    <button class="before-btn">이전</button>
+
+    <!--버튼 스크립트-->
+    <script>
+      var btn_state = 0;
+
+      //다음 이미지 갖고오기
+      $(".next-btn").on("click", function () {
+          //TODO if btn_state==사진 갯수일시 멈추기
+          $(".slide-container").css("transform", 'translateX(-' + ++btn_state + '00vw)');
+
+      });
+      //이전이미지 갖고 오기
+      $(".before-btn").on("click", function () {
+          $(".slide-container").css("transform", 'translateX(-' + --btn_state + '00vw)');
+      });
+    </script>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
