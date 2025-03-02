@@ -152,6 +152,22 @@
       });
     </script>
     <!--스크롤바 만들기용 빈칸-->
+    <div class="lorem" style="width: 300px; height: 100px; overflow-y: scroll">
+  회원약관 테스트 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae voluptas voluptatum minus praesentium fugit debitis at, laborum ipsa itaque placeat sit, excepturi eius. Nostrum perspiciatis, eligendi quae consectetur praesentium exercitationem.
+</div>
+    <script>
+      //div의 스크롤바 내린 양 + 눈에 보이는 박스 높이 + 여유 == div의 실제 높이일때 alert 띄우기
+      $('.lorem').on('scroll',function () {
+        var scroll_amount = document.querySelector('.lorem').scrollTop;
+        var scroll_height = document.querySelector('.lorem').scrollHeight;
+        var scroll_client = document.querySelector('.lorem').clientHeight;
+        var scroll_added = scroll_amount + scroll_client;
+      if(scroll_added == scroll_height){
+        alert('다읽었네');
+      }
+      });
+    </script>
+
     <div style="height: 1000px"></div>
 
     <script
