@@ -16,6 +16,7 @@
       crossorigin="anonymous"></script>
   </head>
   <body>
+    <!--모달창-->
     <div class="black-bg">
       <div class="white-bg">
         <h4>로그인하세요</h4>
@@ -34,6 +35,7 @@
     </div>
 
     <script>
+      $(".black-bg").on("click", function () {});
       //전송버튼 누르면 input입력값이 공백이면 공백입니다라는 알림창 띄우기
       $("form").on("submit", function (e) {
         //원하는 html을 태그명으로 찾고 싶으면 마침표나 # 없이 $('태그명')
@@ -67,25 +69,26 @@
       <li class="list-group-item">5e</li>
     </ul>
     <script>
-       //바 토글
-       $(".navbar-toggler").on("click", function () {
-         $(".list-group").eq(0).slideToggle();
-       });
-       //다크모드
-       $(".badge").on("click", function () {
-         $(this).toggleClass("bg-dark bg-light");
-       });
-       //스크롤바를 얼마나 내렸는지
-      $(window).on('scroll',function(){ //스크롤 될때마다
-         //내부를 실행해줌
-         //if 스크롤이 100px을 지나가면 .navbar-brand의 font-size를 20px로 바꾸고
+      //바 토글
+      $(".navbar-toggler").on("click", function () {
+        $(".list-group").eq(0).slideToggle();
+      });
+      //다크모드
+      $(".badge").on("click", function () {
+        $(this).toggleClass("bg-dark bg-light");
+      });
+      //스크롤바를 얼마나 내렸는지
+      $(window).on("scroll", function () {
+        //스크롤 될때마다
+        //내부를 실행해줌
+        //if 스크롤이 100px을 지나가면 .navbar-brand의 font-size를 20px로 바꾸고
         //100px보다 작아지면 다시 font-size를 30px로 되돌림
-        if($(window).scrollTop() < 100){
-          $(".navbar-brand").css("font-size",'30px');
-        }else{
-          $(".navbar-brand").css("font-size",'20px');
+        if ($(window).scrollTop() < 100) {
+          $(".navbar-brand").css("font-size", "30px");
+        } else {
+          $(".navbar-brand").css("font-size", "20px");
         }
-       });
+      });
     </script>
 
     <p class="hello">안녕</p>
@@ -97,12 +100,18 @@
     </div>
 
     <script>
+      //모달창 열고 닫기
       $("#close").on("click", function () {
-        $(".black-bg").fadeOut(); //로그인 버튼 누르면 show-modal 클래스를 붙이기
+        $(".black-bg").fadeOut();
       });
 
       $("#login").on("click", function () {
         $(".black-bg").fadeIn(); //
+      });
+      $(".black-bg").on("click", function (e){
+        if(e.target == document.querySelector(".black-bg")){ //e.target을 사용해 버블링 제어
+          $(".black-bg").fadeOut(); //이벤트 버블링 버그가 생김
+        }
       });
     </script>
     <div class="alert alert-danger"><span id="alertTime">5</span>초뒤 사라집니다.</div>
@@ -153,18 +162,20 @@
     </script>
     <!--스크롤바 만들기용 빈칸-->
     <div class="lorem" style="width: 300px; height: 100px; overflow-y: scroll">
-  회원약관 테스트 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae voluptas voluptatum minus praesentium fugit debitis at, laborum ipsa itaque placeat sit, excepturi eius. Nostrum perspiciatis, eligendi quae consectetur praesentium exercitationem.
-</div>
+      회원약관 테스트 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae voluptas voluptatum minus
+      praesentium fugit debitis at, laborum ipsa itaque placeat sit, excepturi eius. Nostrum perspiciatis, eligendi quae
+      consectetur praesentium exercitationem.
+    </div>
     <script>
       //div의 스크롤바 내린 양 + 눈에 보이는 박스 높이 + 여유 == div의 실제 높이일때 alert 띄우기
-      $('.lorem').on('scroll',function () {
-        var scroll_amount = document.querySelector('.lorem').scrollTop;
-        var scroll_height = document.querySelector('.lorem').scrollHeight;
-        var scroll_client = document.querySelector('.lorem').clientHeight;
+      $(".lorem").on("scroll", function () {
+        var scroll_amount = document.querySelector(".lorem").scrollTop;
+        var scroll_height = document.querySelector(".lorem").scrollHeight;
+        var scroll_client = document.querySelector(".lorem").clientHeight;
         var scroll_added = scroll_amount + scroll_client;
-      if(scroll_added == scroll_height){
-        alert('다읽었네');
-      }
+        if (scroll_added == scroll_height) {
+          alert("다읽었네");
+        }
       });
     </script>
 
