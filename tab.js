@@ -3,25 +3,16 @@
  * 버튼0에 orange class명 추가
  * 모든(기존) div에 show class명 제거
  * tab-content0에 show class명 추가
-*/
+ */
+//셀럭터는 성능이 낮기 때문에 변수에 담아서 쓰는 것이 좋다
+var tabbtn = $(".tab-button");
+var tabctn = $(".tab-content");
 
-$('.tab-button').eq(0).on('click', function(){
-    $('.tab-button').removeClass("orange");
-    $('.tab-button').eq(0).addClass("orange");
-    $('.tab-content').removeClass("show");
-    $('.tab-content').eq(0).addClass("show");
-});
-
-$('.tab-button').eq(1).on('click', function(){
-    $('.tab-button').removeClass("orange");
-    $('.tab-button').eq(1).addClass("orange");
-    $('.tab-content').removeClass("show");
-    $('.tab-content').eq(1).addClass("show");
-});
-
-$('.tab-button').eq(2).on('click', function(){
-    $('.tab-button').removeClass("orange");
-    $('.tab-button').eq(2).addClass("orange");
-    $('.tab-content').removeClass("show");
-    $('.tab-content').eq(2).addClass("show");
-});
+for (let i = 0; i < tabbtn.length; i++) {
+    tabbtn.eq(i).on("click", function () {
+            tabbtn.removeClass("orange");
+            tabbtn.eq(i).addClass("orange");
+            tabctn.removeClass("show");
+            tabctn.eq(i).addClass("show");
+        });
+}
